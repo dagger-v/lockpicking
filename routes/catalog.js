@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Require controller modules.
 const article_controller = require("../controllers/articleController");
+const contact_controller = require("../controllers/contactController");
 
 /// article ROUTES ///
 
@@ -32,5 +33,10 @@ router.get("/article/:id", article_controller.article_detail);
 
 // GET request for list of all article items.
 router.get("/articles", article_controller.article_list);
+
+/// CONTACT ME ROUTE ///
+
+// GET request for list of all article items.
+router.get("/contact", contact_controller.contact_list);
 
 module.exports = router;

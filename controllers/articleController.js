@@ -1,4 +1,8 @@
+const { body, validationResult } = require("express-validator");
+
 const Article = require("../models/article");
+
+const async = require("async");
 
 exports.index = (req, res) => {
   res.send("NOT IMPLEMENTED: Site Home Page");
@@ -15,8 +19,15 @@ exports.article_detail = (req, res) => {
 };
 
 // Display article create form on GET.
-exports.article_create_get = (req, res) => {
-  res.send("NOT IMPLEMENTED: article create GET");
+exports.article_create_get = (req, res, next) => {
+  async.parallel({}, (err, results) => {
+    if (err) {
+      return next(err);
+    }
+    res.render("article_form", {
+      title: "Create Article",
+    });
+  });
 };
 
 // Handle article create on POST.
