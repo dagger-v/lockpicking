@@ -4,18 +4,61 @@ const Article = require("../models/article");
 
 const async = require("async");
 
-exports.index = (req, res) => {
-  res.send("NOT IMPLEMENTED: Site Home Page");
+exports.index = function (req, res, next) {
+  Article.find({}, "title content createdAt")
+    .sort({ createdAt: -1 })
+    .limit(1)
+    .exec(function (err, recent_article) {
+      if (err) {
+        return next(err);
+      }
+      res.render("index", {
+        title: "Home",
+        recent_article: recent_article,
+      });
+    });
 };
 
 // Display list of all articles.
 exports.article_list = function (req, res, next) {
-  res.render("article_list");
+  Article.find({}, "title")
+    .sort({ title: 1 })
+    .exec(function (err, list_articles) {
+      if (err) {
+        return next(err);
+      }
+      res.render("article_list", {
+        title: "Article List",
+        article_list: list_articles,
+      });
+    });
 };
 
 // Display detail page for a specific article.
-exports.article_detail = (req, res) => {
-  res.send(`NOT IMPLEMENTED: article detail: ${req.params.id}`);
+exports.article_detail = (req, res, next) => {
+  async.parallel(
+    {
+      article(callback) {
+        Article.findById(req.params.id).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.article == null) {
+        // No results.
+        const err = new Error("Article not found");
+        err.status = 404;
+        return next(err);
+      }
+      // Successful, so render.
+      res.render("article_detail", {
+        title: results.article.title,
+        article: results.article,
+      });
+    }
+  );
 };
 
 // Display article create form on GET.
@@ -31,9 +74,56 @@ exports.article_create_get = (req, res, next) => {
 };
 
 // Handle article create on POST.
-exports.article_create_post = (req, res) => {
-  res.send("NOT IMPLEMENTED: article create POST");
-};
+exports.article_create_post = [
+  // Validate and sanitize fields.
+  body("title", "Title must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("content", "Content must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    // Create a Book object with escaped and trimmed data.
+    const article = new Article({
+      title: req.body.title,
+      content: req.body.content,
+    });
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/error messages.
+
+      // Get all authors and genres for form.
+      async.parallel((err, results) => {
+        if (err) {
+          return next(err);
+        }
+        res.render("article_form", {
+          title: "Create Article",
+          authors: results.authors,
+          article,
+          errors: errors.array(),
+        });
+      });
+      return;
+    }
+
+    // Data from form is valid. Save article.
+    article.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      // Successful: redirect to new article record.
+      res.redirect(article.url);
+    });
+  },
+];
 
 // Display article delete form on GET.
 exports.article_delete_get = (req, res) => {

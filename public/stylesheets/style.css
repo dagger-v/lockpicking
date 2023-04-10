@@ -39,7 +39,7 @@ ul p {
   margin: 0 10em;
 }
 
-.main__content p {
+.main__article-p {
   margin: 5px 10px;
 }
 
@@ -112,4 +112,46 @@ h3 {
 .main__content-article a {
   text-decoration: none;
   display: block;
+}
+
+/* ARTICLES */
+
+.main__article {
+  border-top: 1px solid black;
+  width: 80%;
+}
+
+.main__article-title {
+  font-size: larger;
+}
+
+.main__article-author {
+  padding-bottom: 5px;
+  font-style: italic;
+}
+
+/* WRITE ARTICLE */
+
+.main__write-tags {
+  display: flex;
+}
+
+.main__write-tags p {
+  border: 1px solid black;
+  padding: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+/* WRITE ARTICLES - FORM */
+
+.form-group label {
+  display: block;
+  font-size: 20px;
+  margin: 7px 10px 3px 0;
+}
+
+.form-group input,
+textarea {
+  width: 50%;
 }
