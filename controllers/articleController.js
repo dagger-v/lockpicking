@@ -5,18 +5,7 @@ const Article = require("../models/article");
 const async = require("async");
 
 exports.index = function (req, res, next) {
-  Article.find({}, "title content createdAt")
-    .sort({ createdAt: -1 })
-    .limit(1)
-    .exec(function (err, recent_article) {
-      if (err) {
-        return next(err);
-      }
-      res.render("index", {
-        title: "Home",
-        recent_article: recent_article,
-      });
-    });
+  res.render("index");
 };
 
 // Display list of all articles.
@@ -144,3 +133,22 @@ exports.article_update_get = (req, res) => {
 exports.article_update_post = (req, res) => {
   res.send("NOT IMPLEMENTED: article update POST");
 };
+
+// exports.index = function (req, res, next) {
+//   Article.find({}, "title content createdAt")
+//     .sort({ createdAt: -1 })
+//     .limit(1)
+//     .exec(function (err, recent_article) {
+//       if (err) {
+//         return next(err);
+//       }
+//       if (req.isAuthenticated()) {
+//         res.render("register", {
+//           title: "Home",
+//           recent_article: recent_article,
+//         });
+//       } else {
+//         res.render("index");
+//       }
+//     });
+// };
