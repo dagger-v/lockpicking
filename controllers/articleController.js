@@ -4,12 +4,6 @@ const Article = require("../models/article");
 
 const async = require("async");
 
-// exports.index = function (req, res, next) {
-//   res.render("index", {
-//     title: "Home",
-//   });
-// };
-
 exports.index = function (req, res) {
   Article.find({}, "title content createdAt")
     .sort({ createdAt: -1 })
@@ -23,6 +17,24 @@ exports.index = function (req, res) {
         recent_article: recent_article,
       });
     });
+};
+
+// Display search results
+exports.search = function (req, res, next) {
+  const id = req.params.id;
+  Article.find({}, "title author category")
+    .sort({ title: 1 })
+    .exec(function (err, list_articles) {
+      if (err) {
+        return next(err);
+      }
+      res.render("search", {
+        article_list: list_articles,
+        id: id,
+      });
+      console.log(id);
+    });
+  console.log(id);
 };
 
 // Display list of all articles.
@@ -155,22 +167,3 @@ exports.article_update_get = (req, res) => {
 exports.article_update_post = (req, res) => {
   res.send("NOT IMPLEMENTED: article update POST");
 };
-
-// exports.index = function (req, res, next) {
-//   Article.find({}, "title content createdAt")
-//     .sort({ createdAt: -1 })
-//     .limit(1)
-//     .exec(function (err, recent_article) {
-//       if (err) {
-//         return next(err);
-//       }
-//       if (req.isAuthenticated()) {
-//         res.render("register", {
-//           title: "Home",
-//           recent_article: recent_article,
-//         });
-//       } else {
-//         res.render("index");
-//       }
-//     });
-// };

@@ -92,6 +92,10 @@ a {
   cursor: pointer;
 }
 
+.read-more a {
+  text-decoration: none;
+}
+
 /* ARTICLE */
 
 .main__content-article {

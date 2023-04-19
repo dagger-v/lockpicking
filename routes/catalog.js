@@ -10,6 +10,9 @@ const contact_controller = require("../controllers/contactController");
 // GET catalog home page.
 router.get("/", article_controller.index);
 
+// GET catalog search.
+router.get("/article/search/:id", article_controller.search);
+
 // GET request for creating a article. NOTE This must come before routes that display article (uses id).
 router.get("/article/create", article_controller.article_create_get);
 

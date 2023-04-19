@@ -7,52 +7,46 @@
   </div>
   <div class="main__content-tabs">
     <div class="main__content-recent">
-      <h2 class="main__tabs-title">Recent Article</h2>
+      <h2 class="main__tabs-title">
+        Recent Article - <%= recent_article[0].title %>
+      </h2>
       <p class="main__article-p">
-        <%= recent_article[0].content %>
-        <span class="read-more">(Read More...)</span>
+        <%= recent_article[0].content.substring(0, 1200) %>
+        <span class="read-more"
+          >... <a href="<%= recent_article[0].url %>">(Read More)</a>
+        </span>
       </p>
     </div>
-    <!-- <div class="main__content-featured">
-      <h2 class="main__tabs-title">Featured Article</h2>
-      <p class="main__-article-p">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum natus
-        ullam soluta quibusdam nobis itaque adipisci reprehenderit ab aliquam!
-        Inventore ducimus laudantium consectetur, reprehenderit voluptas hic
-        eius quae minima incidunt. Explicabo itaque alias, et ipsum molestiae
-        accusantium consequatur enim totam officiis nesciunt iusto nulla nihil
-        reiciendis minima incidunt aliquam nemo dolorum! Id minima laudantium
-        fugit impedit esse architecto praesentium quam? Perferendis esse et
-        itaque eligendi! Vitae consequuntur laboriosam consequatur esse iure
-        aperiam ex ipsa placeat eos reprehenderit. Eius ratione labore laborum
-        voluptas voluptatem, magnam, nam et nobis, tempora enim.
-        <span class="read-more">(Read More...)</span>
-      </p>
-    </div> -->
   </div>
   <div class="main__content-article">
     <div class="main__content-beginner">
       <h3>Beginners</h3>
       <ul>
-        <li><a href="">Locks</a></li>
-        <li><a href="">Keys</a></li>
-        <li><a href="">Safes</a></li>
+        <li><a href="/catalog/article/search/locks">Locks</a></li>
+        <li><a href="/catalog/article/search/keys">Keys</a></li>
+        <li><a href="/catalog/article/search/safes">Safes</a></li>
       </ul>
     </div>
     <div class="main__content-advance">
       <h3>Advanced</h3>
       <ul>
-        <li><a href="">Key Bumping</a></li>
-        <li><a href="">Impressioning</a></li>
-        <li><a href="">Decoding</a></li>
+        <li><a href="/catalog/article/search/key+bumping">Key Bumping</a></li>
+        <li>
+          <a href="/catalog/article/search/impressioning">Impressioning</a>
+        </li>
+        <li><a href="/catalog/article/search/decoding">Decoding</a></li>
       </ul>
     </div>
     <div class="main__content-security">
       <h3>Cyber Security</h3>
       <ul>
-        <li><a href="">Hacking</a></li>
-        <li><a href="">Network Security</a></li>
-        <li><a href="">Protecting</a></li>
+        <li><a href="/catalog/article/search/hacking">Hacking</a></li>
+        <li>
+          <a href="/catalog/article/search/network+security"
+            >Network Security</a
+          >
+        </li>
+        <li><a href="/catalog/article/search/protecting">Protecting</a></li>
       </ul>
     </div>
   </div>
