@@ -32,10 +32,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function (req, res, next) {
-  // all the stuff from the example
-  if (req.session.user) {
-    res.locals.user = req.session.user;
-  }
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
   next();
 });
 
@@ -62,7 +60,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/", catalogRouter);
 app.use("/users", usersRouter);
 app.use("/catalog", catalogRouter);
 

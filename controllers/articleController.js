@@ -4,8 +4,25 @@ const Article = require("../models/article");
 
 const async = require("async");
 
-exports.index = function (req, res, next) {
-  res.render("index");
+// exports.index = function (req, res, next) {
+//   res.render("index", {
+//     title: "Home",
+//   });
+// };
+
+exports.index = function (req, res) {
+  Article.find({}, "title content createdAt")
+    .sort({ createdAt: -1 })
+    .limit(1)
+    .exec(function (err, recent_article) {
+      if (err) {
+        return next(err);
+      }
+      res.render("index", {
+        title: "Home",
+        recent_article: recent_article,
+      });
+    });
 };
 
 // Display list of all articles.
@@ -43,8 +60,9 @@ exports.article_detail = (req, res, next) => {
       }
       // Successful, so render.
       res.render("article_detail", {
-        title: results.article.title,
         article: results.article,
+        title: results.article.title,
+        author: results.article.author,
       });
     }
   );
@@ -58,6 +76,7 @@ exports.article_create_get = (req, res, next) => {
     }
     res.render("article_form", {
       title: "Create Article",
+      author: req.user,
     });
   });
 };
@@ -73,21 +92,22 @@ exports.article_create_post = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
-
+  body("author").trim().escape(),
+  body("category").trim().escape(),
   // Process request after validation and sanitization.
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a Book object with escaped and trimmed data.
+    // Create an article object with escaped and trimmed data.
     const article = new Article({
       title: req.body.title,
       content: req.body.content,
+      author: req.body.author,
+      category: req.body.category,
     });
 
     if (!errors.isEmpty()) {
-      // There are errors. Render form again with sanitized values/error messages.
-
       // Get all authors and genres for form.
       async.parallel((err, results) => {
         if (err) {
@@ -95,7 +115,9 @@ exports.article_create_post = [
         }
         res.render("article_form", {
           title: "Create Article",
-          authors: results.authors,
+          author: author.username,
+          content: content,
+          category: category,
           article,
           errors: errors.array(),
         });

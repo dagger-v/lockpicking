@@ -4,7 +4,6 @@ const router = express.Router();
 // Require controller modules.
 const article_controller = require("../controllers/articleController");
 const contact_controller = require("../controllers/contactController");
-const settings_controller = require("../controllers/settingsController");
 
 /// article ROUTES ///
 
@@ -39,8 +38,5 @@ router.get("/articles", article_controller.article_list);
 
 // GET request for list of all article items.
 router.get("/contact", contact_controller.contact_list);
-
-/// SETTINGS ROUTE ///
-router.get("/settings", settings_controller.settings_list);
 
 module.exports = router;

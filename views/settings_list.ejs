@@ -1,7 +1,12 @@
 <%- include("header"); -%> <%- include("sidebar"); -%>
 
 <div class="main__content">
-  <p>User Settings</p>
+  <div class="main__content-container">
+    <h1>My Account: <%= user.username %></h1>
+    <p>My Account Information</p>
+    <p>Name: <%= user.username %></p>
+    <p>Member Since:</p>
+  </div>
 </div>
 
 <%- include("footer"); -%>

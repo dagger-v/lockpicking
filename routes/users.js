@@ -34,4 +34,7 @@ router.post("/login", user_controller.login_account);
 // Logout user
 router.get("/logout", user_controller.logout);
 
+/// SETTINGS ROUTE ///
+router.get("/settings", user_controller.settings_list);
+
 module.exports = router;

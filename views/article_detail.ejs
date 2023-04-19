@@ -1,8 +1,12 @@
 <%- include("header"); -%> <%- include("sidebar"); -%>
 
 <div class="main__content">
-  <p><%= article.title %></p>
-  <p><%= article.content %></p>
+  <div class="main__content-container">
+    <p><%= article.title %></p>
+    <p><%= article.content %></p>
+    <p><%= article.author %></p>
+    <p><%= article.category %></p>
+  </div>
 </div>
 
 <%- include("footer"); -%>

@@ -2,14 +2,17 @@
   <li><a href="/">Home</a></li>
   <li><a href="/catalog/articles">All Articles</a></li>
   <li><a href="/catalog/contact">Contact Me</a></li>
-  <p>USER PANEL</p>
+  <p class="user-panel">USER PANEL</p>
 
+  <%if (isAuthenticated) { %>
   <!--Logout-->
-  <li><a href="/users/logout">Logout</a></li>
-  <!--Sign In/Register-->
-  <li><a href="/users/login">Login</a></li>
-  <li><a href="/users/register">Register</a></li>
-
+  <p class="username"><%= user.username %></p>
   <li><a href="/catalog/article/create">Write Article</a></li>
-  <li><a href="/catalog/settings">User Settings</a></li>
+  <li><a href="/users/settings">User Settings</a></li>
+  <li><a href="/users/logout">Logout</a></li>
+  <% }else{ %>
+  <!--Sign In/Register-->
+  <li><a href="/users/register">Register</a></li>
+  <li><a href="/users/login">Login</a></li>
+  <%}%>
 </ul>

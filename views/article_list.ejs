@@ -1,17 +1,19 @@
 <%- include("header"); -%> <%- include("sidebar"); -%>
 
 <div class="main__content">
-  <h1>All Articles</h1>
-
-  <%= article_list.title %>
-
+  <div class="main__content-container">
+    <h1>All Articles</h1>
+    
+    <%= article_list.title %>
+    
     <% article_list.forEach(function(article) { %>
       <div class="main__article"> 
         <p class="main__article-title"> <a href=<%= article.url %>><%= article.title %> </p></a>
         <p class="main__article-tags">tags</p>
         <p class="main__article-author"> written by: <%= article.author || "Strat Holme" %> </p>
       </div>
-    <% }); %>
+      <% }); %>
+    </div>
 </div>
 
 <%- include("footer"); -%>
