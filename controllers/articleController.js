@@ -39,7 +39,7 @@ exports.search = function (req, res, next) {
 
 // Display list of all articles.
 exports.article_list = function (req, res, next) {
-  Article.find({}, "title")
+  Article.find({}, "title author content createdAt category")
     .sort({ title: 1 })
     .exec(function (err, list_articles) {
       if (err) {

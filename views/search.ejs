@@ -2,16 +2,20 @@
 
 <div class="main__content">
   <div class="main__content-container">
+    <% if (!article_list.length) { %>
+      <p>No Matches</p>
+    <% } %>
 
     <% article_list.forEach(function(article) { %>
       <% if (article.category === id) { %>
         <div class="main__article"> 
           <p class="main__article-title"> <a href=<%= article.url %>><%= article.title %> </p></a>
-          <p class="main__article-tags"> <%= article.category %> </p>
           <p class="main__article-author"> written by: <%= article.author %> </p>
+          <p class="main__article-category"> <%= article.category %> </p>
         </div>
       <% } %>
     <% }); %>
+
     </div>
 </div>
 

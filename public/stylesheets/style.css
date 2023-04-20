@@ -130,17 +130,29 @@ h3 {
 /* ARTICLES */
 
 .main__article {
-  border-top: 1px solid black;
   width: 80%;
+  margin-top: 4em;
 }
 
 .main__article-title {
-  font-size: larger;
+  font-size: 24px;
+}
+
+.main__article-title a {
+  text-decoration: none;
 }
 
 .main__article-author {
   padding-bottom: 5px;
   font-style: italic;
+}
+
+.main__article-category {
+  border: 1px solid #7fb77e;
+  background-color: #7fb77e;
+  color: #fff;
+  display: inline;
+  padding: 3px;
 }
 
 /* WRITE ARTICLE */
