@@ -13,7 +13,7 @@ exports.index = function (req, res) {
         return next(err);
       }
       res.render("index", {
-        title: "Home",
+        title: "Lockpicking",
         recent_article: recent_article,
       });
     });

@@ -4,6 +4,7 @@ const session = require("express-session");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const helmet = require("helmet");
 
 require("dotenv").config();
 const bodyParser = require("body-parser");
@@ -36,6 +37,9 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+// helmet
+app.use(helmet());
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
@@ -79,5 +83,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+// disable express powered by
+app.disable("x-powered-by");
 
 module.exports = app;

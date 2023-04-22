@@ -1,11 +1,20 @@
 <%- include("header"); -%> <%- include("sidebar"); -%>
 
 <div class="main__content">
-  <div class="main__content-container">
-    <p><%= article.title %></p>
-    <div><%= article.content %></div>
-    <p><%= article.author %></p>
-    <p><%= article.category %></p>
+  <div class="main__detail-container">
+    <div class="main__detail-title">
+      <h1 class="main__detail-title-p"><%= article.title %></h1>
+      <p class="main__detail-author">by <%= article.author %></p>
+      <p class="main__detail-date">
+        <%= article.createdAt.toLocaleDateString() %>
+      </p>
+    </div>
+    <div class="main__detail-content">
+      <p><%= article.content %></p>
+    </div>
+    <div class="main__detail-category">
+      <p><%= article.category %></p>
+    </div>
   </div>
 </div>
 

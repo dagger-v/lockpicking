@@ -192,3 +192,46 @@ h3 {
 textarea {
   width: 50%;
 }
+
+/* ARTICLE DETAIL */
+
+.main__detail-container {
+  margin: 0 10em;
+  word-wrap: break-word;
+}
+
+.main__detail-title {
+  border: 1px solid #b0daff;
+  background-color: #b0daff;
+}
+
+.main__detail-title-p {
+  padding: 10px;
+}
+
+.main__detail-author {
+  padding-left: 10px;
+  font-style: italic;
+}
+
+.main__detail-date {
+  padding-left: 10px;
+}
+
+.main__detail-content {
+  white-space: pre-line;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+.main__detail-category {
+  margin-top: 10px;
+}
+
+.main__detail-category p {
+  border: 1px solid #7fb77e;
+  background-color: #7fb77e;
+  color: #fff;
+  display: inline;
+  padding: 3px;
+}
