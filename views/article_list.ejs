@@ -10,9 +10,8 @@
       <div class="main__article"> 
         <p class="main__article-title"> <a href=<%= article.url %>><%= article.title %> </p></a>
         <p class="main__article-author"> by: <%= article.author %> - <%= article.createdAt.toLocaleDateString()  %> </p>
-        <p> <%= article.content.substring(0, 500) %> ... </p>
-        <p class="main__article-category"> <%= article.category  %> </p>
-        <p> <a href="<%=article.url %>">Full Article</a> </p>
+        <p> <%= article.content.substring(0, 500) %> ... <a href="<%=article.url %>">Full Article</a> </p>
+        <p class="main__article-category"> <%= article.category %> </p>
       </div>
       <% }); %>
     </div>

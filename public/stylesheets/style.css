@@ -44,6 +44,12 @@ a {
   margin: 0 10em;
 }
 
+/* @media (max-width: 576px) {
+  .main__content {
+    background-color: red;
+  }
+} */
+
 .main__content-container {
   margin: 0 2em;
 }
@@ -112,7 +118,7 @@ a {
   flex: 1 1 55%;
 }
 
-h3 {
+h4 {
   padding-left: 5px;
   background-color: #cedff2;
   border: 1px solid #ddd;

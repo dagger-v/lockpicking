@@ -9,7 +9,17 @@ const ArticleSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   category: {
     type: String,
-    enum: ["locks", "keys", "security"],
+    enum: [
+      "locks",
+      "keys",
+      "security",
+      "key bumping",
+      "impressioning",
+      "decoding",
+      "hacking",
+      "network security",
+      "protecting",
+    ],
   },
 });
 

@@ -2,7 +2,6 @@
 
 <div class="main__content">
   <div class="main__content-container">
-    <p>Write Articles Here</p>
     <form action="" method="POST">
       <p class="main__write-p">Select Tags</p>
       <div class="main__write-tags">
@@ -47,9 +46,21 @@
       <div class="form-group">
         <label for="category"></label>
         <select name="category" id="category">
-          <option value="keys">keys</option>
-          <option value="locks">locks</option>
-          <option value="security">security</option>
+          <optgroup label="Beginners">
+            <option value="keys">Keys</option>
+            <option value="locks">Locks</option>
+            <option value="safes">Safes</option>
+          </optgroup>
+          <optgroup label="Advanced">
+            <option value="key bumping">Key Bumping</option>
+            <option value="impressioning">Impressioning</option>
+            <option value="decoding">Decoding</option>
+          </optgroup>
+          <optgroup label="Cyber Security">
+            <option value="hacking">Hacking</option>
+            <option value="network security">Network Security</option>
+            <option value="protecting">Protecting</option>
+          </optgroup>
         </select>
       </div>
       <button type="submit">Submit</button>

@@ -40,6 +40,8 @@ app.use(function (req, res, next) {
 
 // helmet
 app.use(helmet());
+app.use(helmet.noSniff());
+app.use(helmet.frameguard("deny"));
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
