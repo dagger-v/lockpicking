@@ -2,6 +2,7 @@ const { body, validationResult } = require("express-validator");
 
 const Article = require("../models/article");
 
+const asyncHandler = require("express-async-handler");
 const async = require("async");
 
 exports.index = function (req, res) {
@@ -159,11 +160,74 @@ exports.article_delete_post = (req, res) => {
 };
 
 // Display article update form on GET.
-exports.article_update_get = (req, res) => {
-  res.send("NOT IMPLEMENTED: article update GET");
-};
+exports.article_update_get = asyncHandler(async (req, res, next) => {
+  const article = await Promise.all([
+    Article.findById(req.params.id)
+      .populate("author")
+      .populate("content")
+      .populate("category")
+      .exec(),
+  ]);
+
+  if (article === null) {
+    const err = new Error("Article Not Found!");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("article_form", {
+    title: "Update Article",
+    author: author,
+    content: content,
+    category: category,
+    article: article,
+  });
+});
 
 // Handle article update on POST.
-exports.article_update_post = (req, res) => {
-  res.send("NOT IMPLEMENTED: article update POST");
-};
+exports.article_update_post = [
+  (req, res, next) => {
+    body("title", "Title must not be empty.")
+      .trim()
+      .isLength({ min: 1 })
+      .escape(),
+      body("content", "Content must not be empty.")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+      body("author").trim().escape(),
+      body("category").trim().escape(),
+      asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+
+        // Create an article object with escapped/trimmed data and old ID
+
+        const article = new Article({
+          title: req.body.title,
+          content: req.body.content,
+          author: req.body.author,
+          category: req.body.category,
+          _id: req.params.id,
+        });
+
+        if (!errors.isEmpty()) {
+          res.render("article_form", {
+            title: "Update Article",
+            content: content,
+            author: author,
+            category: category,
+            article: article,
+            errors: errors.array(),
+          });
+          return;
+        } else {
+          const thearticle = await Article.findByIdAndUpdate(
+            req.params.id,
+            article,
+            {}
+          );
+          res.redirect(thearticle.url);
+        }
+      });
+  },
+];

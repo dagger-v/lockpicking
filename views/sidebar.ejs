@@ -1,18 +1,18 @@
-<ul class="sidebar-ul">
-  <li><a href="/">Home</a></li>
-  <li><a href="/catalog/articles">All Articles</a></li>
-  <li><a href="/catalog/contact">Contact Me</a></li>
-  <p class="user-panel">USER PANEL</p>
+<div class="sidebar">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/catalog/articles">All Articles</a></li>
+    <li><a href="/catalog/contact">Contact Me</a></li>
 
-  <%if (isAuthenticated) { %>
-  <!--Logout-->
-  <p class="username"><%= user.username %></p>
-  <li><a href="/catalog/article/create">Write Article</a></li>
-  <li><a href="/users/settings">User Settings</a></li>
-  <li><a href="/users/logout">Logout</a></li>
-  <% }else{ %>
-  <!--Sign In/Register-->
-  <li><a href="/users/register">Register</a></li>
-  <li><a href="/users/login">Login</a></li>
-  <%}%>
-</ul>
+    <%if (isAuthenticated) { %>
+    <!--Logout-->
+    <li><a href="/catalog/article/create">Write Article</a></li>
+    <li><a href="/users/settings">User Settings</a></li>
+    <li><a href="/users/logout">Logout</a></li>
+    <% }else{ %>
+    <!--Sign In/Register-->
+    <li><a href="/users/register">Register</a></li>
+    <li><a href="/users/login">Login</a></li>
+    <%}%>
+  </ul>
+</div>
