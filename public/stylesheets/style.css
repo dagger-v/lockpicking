@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -39,8 +38,8 @@ a {
 }
 
 /* MAIN */
-
-.main__content {
+.main__content,
+.navbar {
   margin: 0 10em;
 }
 
@@ -61,7 +60,6 @@ a {
 .main__content-tabs {
   display: flex;
   gap: 5px;
-  margin: 0 10em;
   margin-top: 5px;
 }
 
@@ -71,7 +69,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10em;
 }
 
 .main__tabs-title {
@@ -102,7 +99,6 @@ a {
 .main__content-article {
   display: flex;
   gap: 5px;
-  margin: 0 10em;
   margin-top: 25px;
 }
 
@@ -195,7 +191,6 @@ textarea {
 /* ARTICLE DETAIL */
 
 .main__detail-container {
-  margin: 0 10em;
   word-wrap: break-word;
 }
 
@@ -236,9 +231,6 @@ textarea {
 }
 
 @media (max-width: 576px) {
-  .sidebar {
-    display: none;
-  }
   .main__content {
     margin: 0;
   }
@@ -253,4 +245,91 @@ textarea {
     display: flex;
     flex-direction: column;
   }
+}
+
+.navbar {
+  height: auto;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navbar ul li {
+  float: left;
+  position: relative;
+  margin: 0 20px 0 0;
+}
+
+li > a:after {
+  content: " »";
+} /* Change this in order to change the Dropdown symbol */
+
+li > a:only-child:after {
+  content: "";
+}
+
+.navbar ul li a {
+  padding: 20px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  opacity: 0.5;
+}
+
+.navbar ul li ul {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+
+.navbar ul li ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul li:hover ul {
+  display: block;
+}
+
+li:hover,
+li:focus-within {
+  cursor: pointer;
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+  background: white;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+.right {
+  float: right;
 }
