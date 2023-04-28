@@ -6,48 +6,97 @@ a {
   color: #00b7ff;
 }
 
-.main__content-username {
-  display: flex;
-  text-align: right;
+/* NAVBAR */
+.navbar {
+  height: auto;
+  border-bottom: 1px solid #deebde;
 }
 
-/* SIDEBAR */
-.sidebar ul {
-  margin-top: 8em;
-  width: 12em;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
-
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.sidebar li {
+.navbar ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
-.user-panel {
-  margin-left: 16px;
-  font-weight: bolder;
-  margin-top: 4em;
+.navbar ul li {
+  float: left;
+  position: relative;
+  margin: 0 20px 0 0;
+}
+
+li > a:after {
+  content: " »";
+} /* Change this in order to change the Dropdown symbol */
+
+li > a:only-child:after {
+  content: "";
+}
+
+.navbar ul li a {
+  padding: 20px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  opacity: 0.5;
+}
+
+.navbar ul li ul {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+
+.navbar ul li ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul li:hover ul {
+  display: block;
+}
+
+li:hover,
+li:focus-within {
+  cursor: pointer;
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+  background: white;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
 }
 
 /* MAIN */
 .main__content,
 .navbar {
   margin: 0 10em;
+  margin-top: 10px;
 }
-
-/* @media (max-width: 576px) {
-  .main__content {
-    background-color: red;
-  }
-} */
 
 .main__content-container {
   margin: 0 2em;
@@ -192,6 +241,12 @@ textarea {
 
 .main__detail-container {
   word-wrap: break-word;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 0 1rem;
+  width: 780px;
 }
 
 .main__detail-title {
@@ -230,106 +285,34 @@ textarea {
   padding: 3px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 1191px) {
   .main__content {
+    margin: 0 4em;
+  }
+  .main__detail-container {
     margin: 0;
   }
-  .main__content-title {
-    margin: 0;
+}
+
+@media (max-width: 991px) {
+  .main__content {
+    margin: 0 3em;
   }
-  .main__content-tabs {
-    margin: 0;
+}
+
+@media (max-width: 767px) {
+  .main__content {
+    margin: 0 2em;
+  }
+}
+
+@media (max-width: 575px) {
+  .main__content {
+    margin: 0 1em;
   }
   .main__content-article {
     margin: 0;
     display: flex;
     flex-direction: column;
   }
-}
-
-.navbar {
-  height: auto;
-}
-
-.navbar ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.navbar ul li {
-  float: left;
-  position: relative;
-  margin: 0 20px 0 0;
-}
-
-li > a:after {
-  content: " »";
-} /* Change this in order to change the Dropdown symbol */
-
-li > a:only-child:after {
-  content: "";
-}
-
-.navbar ul li a {
-  padding: 20px;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.navbar ul li a:hover {
-  opacity: 0.5;
-}
-
-.navbar ul li ul {
-  display: none;
-  position: absolute;
-  left: 0;
-}
-
-.navbar ul li ul li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.navbar ul li:hover ul {
-  display: block;
-}
-
-li:hover,
-li:focus-within {
-  cursor: pointer;
-}
-
-li:focus-within a {
-  outline: none;
-}
-
-ul li ul {
-  background: white;
-  visibility: hidden;
-  opacity: 0;
-  min-width: 5rem;
-  position: absolute;
-  transition: all 0.5s ease;
-  margin-top: 1rem;
-  left: 0;
-  display: none;
-}
-
-ul li:hover > ul,
-ul li:focus-within > ul,
-ul li ul:hover,
-ul li ul:focus {
-  visibility: visible;
-  opacity: 1;
-  display: block;
-}
-
-ul li ul li {
-  clear: both;
-  width: 100%;
-}
-
-.right {
-  float: right;
 }

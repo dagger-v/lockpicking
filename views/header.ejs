@@ -20,26 +20,13 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/catalog/articles">All Articles</a></li>
-        <li>
-          <a href="#">Portfolio</a>
-          <ul>
-            <li><a href="#">Graphic</a></li>
-            <li><a href="#">Web</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-          <ul>
-            <li><a href="#">Map</a></li>
-            <li><a href="#">Form</a></li>
-          </ul>
-        </li>
+        <li><a href="/catalog/contact">Contact</a></li>
       </ul>
       <ul>
         <%if (isAuthenticated) { %>
         <!--Logout-->
         <li>
-          <a class="right" href="/users/settings"><%= user.username %></a>
+          <a href="/users/settings"><%= user.username %></a>
           <ul>
             <li><a href="/catalog/article/create">Write Article</a></li>
             <li><a href="/users/logout">Logout</a></li>
@@ -47,8 +34,8 @@
         </ul>
         <% }else{ %>
         <!--Sign In/Register-->
-        <li class="right"><a href="/users/register">Register</a></li>
-        <li class="right"><a href="/users/login">Login</a></li>
+        <li><a href="/users/register">Register</a></li>
+        <li><a href="/users/login">Login</a></li>
         <%}%>
       </ul>
     </nav>

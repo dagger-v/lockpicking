@@ -1,7 +1,8 @@
-<%- include("header"); -%> <%- include("sidebar"); -%>
+<%- include("header"); -%>
 
 <div class="main__content">
   <div class="main__content-container">
+    <h5>Search for articles: <em><%= id %></em> </h5>
     <% if (!article_list.length) { %>
       <p>No Matches</p>
     <% } %>
@@ -11,6 +12,7 @@
         <div class="main__article"> 
           <p class="main__article-title"> <a href=<%= article.url %>><%= article.title %> </p></a>
           <p class="main__article-author"> written by: <%= article.author %> </p>
+          <p class="main__article-content"> <%= article.content.substring(0, 500) %> ... <a href="<%=article.url %>">Full Article</a> </p>
           <p class="main__article-category"> <%= article.category %> </p>
         </div>
       <% } %>

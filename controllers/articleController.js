@@ -23,7 +23,7 @@ exports.index = function (req, res) {
 // Display search results
 exports.search = function (req, res, next) {
   const id = req.params.id;
-  Article.find({}, "title author category")
+  Article.find({}, "title author content category")
     .sort({ title: 1 })
     .exec(function (err, list_articles) {
       if (err) {
