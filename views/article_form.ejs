@@ -2,6 +2,7 @@
 
 <div class="main__content">
   <div class="main__content-container">
+    <%if (isAuthenticated) { %>
     <form action="" method="POST">
       <div class="form-group">
         <label for="title">Write Your Title</label>
@@ -59,6 +60,9 @@
       </div>
       <button type="submit">Submit</button>
     </form>
+    <% }else{ %>
+    <h1>Oops! You aren't authorized to do that!</h1>
+    <%}%>
   </div>
 </div>
 

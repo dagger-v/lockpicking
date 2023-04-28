@@ -26,7 +26,7 @@ a {
 
 li > a:after {
   content: " »";
-} /* Change this in order to change the Dropdown symbol */
+}
 
 li > a:only-child:after {
   content: "";
@@ -54,11 +54,6 @@ li > a:only-child:after {
 
 .navbar ul li:hover ul {
   display: block;
-}
-
-li:hover,
-li:focus-within {
-  cursor: pointer;
 }
 
 li:focus-within a {
@@ -168,7 +163,7 @@ h4 {
 
 .main__content-article a {
   text-decoration: none;
-  display: block;
+  display: inline;
 }
 
 /* ARTICLES */
@@ -283,6 +278,11 @@ textarea {
   color: #fff;
   display: inline;
   padding: 3px;
+}
+
+/* FOOTER */
+.main__footer {
+  margin: 0 10em;
 }
 
 @media (max-width: 1191px) {
