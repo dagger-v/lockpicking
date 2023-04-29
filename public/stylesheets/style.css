@@ -281,9 +281,6 @@ textarea {
 }
 
 /* FOOTER */
-.main__footer {
-  margin: 0 10em;
-}
 
 @media (max-width: 1191px) {
   .main__content {

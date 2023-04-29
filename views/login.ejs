@@ -1,18 +1,20 @@
 <%- include("header"); -%>
 
 <div class="main__content">
-  <form action="/users/login" method="post">
-    <h3>Login</h3>
-    <div class="form-control">
-      <label for="login">Username</label>
-      <input type="text" name="username" id="login" required />
-    </div>
-    <div class="form-control">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" required />
-    </div>
-    <button type="submit">Submit</button>
-  </form>
+  <div class="form-group">
+    <form action="/users/login" method="post">
+      <h3>Login</h3>
+      <div class="form-control">
+        <label for="login">Username</label>
+        <input type="text" name="username" id="login" required />
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
 
 <%- include("footer"); -%>
