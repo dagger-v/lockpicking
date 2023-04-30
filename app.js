@@ -1,6 +1,7 @@
 var createError = require("http-errors");
 var express = require("express");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -23,6 +24,7 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MongoURL }),
   })
 );
 
